@@ -1,6 +1,7 @@
 import { GET_DATA, SEND_MESSAGE } from './constants';
 
 const initialState = {      
+  data: [],  
   message: [],
   loading: false, 
   error: null,    
