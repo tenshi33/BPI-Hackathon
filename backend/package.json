@@ -27,6 +27,7 @@
     "mongoose": "^8.5.2",
     "mongoose-sequence": "^6.0.1",
     "nodemon": "^3.1.4",
+    "ollama": "^0.5.9",
     "openai": "^4.55.3"
   }
 }
