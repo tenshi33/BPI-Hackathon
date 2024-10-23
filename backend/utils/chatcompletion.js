@@ -16,7 +16,8 @@ export default async function chatcompletion(message) {
         { role: 'user', content: message },
         { role: 'system', content: 'Summary, Make it at least 1 sentence' }
       ],
-      model: 'llama3.2:1b',  
+      //model: 'llama3.2:1b',  
+      model: 'gpt-4o-mini', 
     });
 
     return completion.choices[0].message.content;
