@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Chatbot } from './chatbot/chatbot';
 import { Login } from './Login/Login';
+import Unauthorized from './401/Unanuthorized';
 import { connect } from "react-redux";
 
 const App = (props) => {
@@ -9,6 +10,7 @@ const App = (props) => {
         <div>
             <Routes>
                 <Route path="/" element={<Login />} />
+                <Route path="/401" element={<Unauthorized />} />
                 <Route 
                     path="/protected/:userID" 
                     element={

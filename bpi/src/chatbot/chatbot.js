@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 
 // Redux
@@ -8,12 +9,18 @@ import { actionName } from "../redux/actions";
 
 const Chatbot = (props) => {
   const navigate = useNavigate()
+  const { userID: urlUserID } = useParams();
   const [userInput, setUserInput] = useState("");
 
   useEffect(() => {
     props.getData();
   }, [props, props.message]);
 
+  useEffect(() => {
+    if (props.userID !== urlUserID) {
+      navigate("/401");
+  }
+  }, [props.userID, urlUserID, navigate]);
 
 
   const handleSend = () => {
@@ -24,7 +31,7 @@ const Chatbot = (props) => {
   };
 
   function logout() {
-        localStorage.removeItem('userID'); // Clear userID from localStorage
+        localStorage.removeItem('userID'); 
         props.logoutUser()
         navigate(`/`);
 
@@ -66,6 +73,7 @@ const Chatbot = (props) => {
 
 const mapState = (state) => ({
   data: state.reducerName.data,
+  userID: state.reducerName.userID
 });
 
 const actionCreators = {
@@ -74,6 +82,6 @@ const actionCreators = {
   postChatCompletion: actionName.postChatCompletion,
 };
 
-// Connect component with Redux
+
 const connectedChatbot = connect(mapState, actionCreators)(Chatbot);
 export { connectedChatbot as Chatbot };
