@@ -12,7 +12,7 @@ export const serviceFunction = {
       },
     };
   
-    return fetch(`http://localhost:3001/api/chathistory/query`, requestOptions)
+    return fetch(`http://localhost:3002/api/chathistory/query`, requestOptions)
       .then(handleResponse);
   }
   
@@ -26,7 +26,7 @@ export const serviceFunction = {
         body: JSON.stringify({message:message}),
       };
   
-    return fetch(`http://localhost:3001/api/chatcompletion`, requestOptions)
+    return fetch(`http://localhost:3002/api/chatcompletion`, requestOptions)
       .then(handleResponse);
   }
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 // Redux
@@ -6,7 +7,7 @@ import { connect } from "react-redux";
 import { actionName } from "../redux/actions";
 
 const Chatbot = (props) => {
-
+  const navigate = useNavigate()
   const [userInput, setUserInput] = useState("");
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const Chatbot = (props) => {
   function logout() {
         localStorage.removeItem('userID'); // Clear userID from localStorage
         props.logoutUser()
+        navigate(`/`);
 
 }
 

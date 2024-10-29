@@ -9,11 +9,11 @@ const App = (props) => {
         <div>
             <Routes>
                 <Route path="/" element={<Login />} />
-                <Route
-                    path="/protected/:userID"
+                <Route 
+                    path="/protected/:userID" 
                     element={
                         props.userID ? <Chatbot /> : <Navigate to="/" />
-                    }
+                    } 
                 />
             </Routes>
         </div>

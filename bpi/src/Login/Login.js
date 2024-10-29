@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { actionName } from "../redux/actions";
@@ -13,12 +13,17 @@ const Login = (props) => {
         await props.loginUser({ email, password });
         if(props.userID){
          console.log(props.userID, "login form")
-         localStorage.getItem(props.userID)
          navigate(`/protected/${props.userID}`);
          
         }
     };
 
+    useEffect(() => {
+        if (props.userID) {
+            navigate(`/protected/${props.userID}`);
+        }
+        console.log(props.userID)
+    }, [props.userID, navigate]);
 
 
     return (
