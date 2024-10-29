@@ -16,17 +16,9 @@ const querySchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  timestamp: {
-    type: Date,
-    default: Date.now,
-  },
 },{ collection: 'chatbotHistory' });
 
 const userDataSchema = new mongoose.Schema({
-  userID: {
-    type: Number,
-    unique: true,
-  },
   fullName: {
     type: String,
     required: true,
@@ -40,55 +32,44 @@ const userDataSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  phone: {
+    type: Number,
+    required: true,
+  },
   age: {
     type: Number,
     required: true,
   },
   income: {
-    type: String,
-    required: true,
+    type: Number,
   },
   financialGoals: {
     type: String,
-    required: true,
   },
   loansDebts: {
     type: Number,
-    required: true,
   },
   savings: {
     type: Number,
-    required: true,
   },
   businessName: {
     type: String,
-    required: true,
   },
   industry: {
     type: String,
-    required: true,
   },
-  employees: {
+  numEmployees: {
     type: Number,
-    required: true,
   },
   revenue: {
     type: Number,
-    required: true,
   },
   shortTermGoals: {
     type: String,
-    required: true,
-    trim: true,
   },
   longTermGoals: {
     type: String,
-    required: true,
-    trim: true,
-  },
-  timestamp: {
-    type: Date,
-    default: Date.now,
+
   },
 },{ collection: 'UserData' });
 

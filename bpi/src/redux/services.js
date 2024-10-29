@@ -1,6 +1,7 @@
 export const serviceFunction = {
     getData,
-    postChatCompletion
+    postChatCompletion,
+    loginUser
   };
   
   function getData() {
@@ -29,6 +30,20 @@ export const serviceFunction = {
       .then(handleResponse);
   }
 
+  
+  function loginUser(data) {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+
+        },
+        body: JSON.stringify(data),
+      };
+  
+    return fetch(`http://localhost:3002/v1/rest/users/login`, requestOptions)
+      .then(handleResponse);
+  }
 
   function handleResponse(response) {
     return response.text().then((text) => {

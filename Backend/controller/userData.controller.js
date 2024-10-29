@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const data = require('../service/userData.service.js');
+const data = require('../service/userData.service');
 
 router.get('/getAll', getAll)
 router.get('/filterUserData', filterUserData)
-// router.post('/insert', postTodoItem)
-// router.put('/update', editTodoItem)
+router.post('/register', registerUser)
+router.post('/login', loginUser)
+router.put('/update', editUserData)
 
 function getAll(req, res) {
     data.getAll()
@@ -28,17 +29,44 @@ function filterUserData(req, res) {
         });
 }
 
-// function editTodoItem(req, res) {
-//     const data = req.body;
-//     console.log(data)
-//     TodoService.editTodoItem(data)
-//         .then((result) => {
-//             return res.status(200).json(result);
-//         })
-//         .catch((err) => {
-//             return res.status(500).json({ error: err.message }); 
-//         });
-// }
+function registerUser(req, res) {
+    const user = req.body;
+    console.log(user)
+    data.registerUser(user)
+        .then((result) => {
+            return res.status(200).json(result);
+        })
+        .catch((err) => {
+            return res.status(500).json({ error: err.message }); 
+        });
+}
+
+
+function editUserData(req, res) {
+    const updatedUser = req.body;
+    console.log(updatedUser)
+    data.editUserData(updatedUser)
+        .then((result) => {
+            return res.status(200).json(result);
+        })
+        .catch((err) => {
+            return res.status(500).json({ error: err.message }); 
+        });
+}
+
+function loginUser(req, res) {
+    const User = req.body;
+    console.log(User)
+    data.loginUser(User)
+        .then((result) => {
+            return res.status(200).json(result);
+        })
+        .catch((err) => {
+            return res.status(500).json({ error: err.message }); 
+        });
+}
+
+
 
 
 module.exports = router; 

@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
+
 
 // Redux
 import { connect } from "react-redux";
 import { actionName } from "../redux/actions";
 
 const Chatbot = (props) => {
-  const [botResponse, setBotResponse] = useState([]);
+
   const [userInput, setUserInput] = useState("");
 
   useEffect(() => {
     props.getData();
-  }, [props.message]);
+  }, [props, props.message]);
 
-  useEffect(() => {
-    if (props.message.length > 0) {
-      setBotResponse(props.message);
-    }
-  }, [props.message]);
+
 
   const handleSend = () => {
     if (userInput.trim()) {
@@ -24,6 +21,13 @@ const Chatbot = (props) => {
       setUserInput("");
     }
   };
+
+  function logout() {
+        localStorage.removeItem('userID'); // Clear userID from localStorage
+        props.logoutUser()
+
+}
+
 
   return (
     <div className="chatbot-container">
@@ -53,17 +57,18 @@ const Chatbot = (props) => {
         />
         <button onClick={handleSend}>Send</button>
       </div>
+      <button onClick={logout}>LOGOUT</button>
     </div>
   );
 };
 
 const mapState = (state) => ({
-  message: state.reducerName.message,
   data: state.reducerName.data,
 });
 
 const actionCreators = {
   getData: actionName.getData,
+  logoutUser : actionName.logoutUser,
   postChatCompletion: actionName.postChatCompletion,
 };
 

@@ -1,8 +1,9 @@
-import { GET_DATA, SEND_MESSAGE } from './constants';
+import { GET_DATA, SEND_MESSAGE, LOGIN , LOGOUT} from './constants';
 
 const initialState = {      
   data: [],  
   message: [],
+  userID: localStorage.getItem('userID') || "",
   loading: false, 
   error: null,    
 };
@@ -35,7 +36,7 @@ export function reducerName(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        message: action.message, // Append the new message to the array
+        message: action.message, 
       };
     case SEND_MESSAGE.FAILURE:
       return {
@@ -43,6 +44,30 @@ export function reducerName(state = initialState, action) {
         loading: false,
         error: action.error,
       };
+      case LOGIN.REQUEST:
+        return {
+          ...state,
+          loading: true,
+        };
+      case LOGIN.SUCCESS:
+        console.log('Reducer - UserID received:', action.userID);
+        return {
+          ...state,
+          loading: false,
+          userID: action.userID,
+        };
+      case LOGIN.FAILURE:
+        return {
+          ...state,
+          loading: false,
+          error: action.error,
+        };
+        case LOGOUT.SUCCESS:
+          return {
+            ...state,
+            loading: false,
+            userID: "",
+          };
     default:
       return state;
   }

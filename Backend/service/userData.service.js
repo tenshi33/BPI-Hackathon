@@ -12,10 +12,37 @@ async function filterUserData(userID){
     })
 }
 
+async function registerUser(data){
+    return await Data.create(data)
+}
+
+
+async function editUserData(data){
+    return await Data.updateOne(
+        {email: data.email},
+        {$set : data},
+        { upsert: true }
+    )
+}
+
+async function loginUser(data) {
+    const user = await Data.findOne({ email: data.email });
+
+    if (user && user.password === data.password) {
+        return user._id;
+    }
+
+    return null; 
+}
+
+
 
 
 
 module.exports = {
     getAll,
-    filterUserData
+    filterUserData,
+    registerUser,
+    editUserData,
+    loginUser
 };

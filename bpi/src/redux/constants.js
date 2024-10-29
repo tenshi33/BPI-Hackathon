@@ -14,3 +14,13 @@
     
   };
   
+  export const LOGIN = {
+    REQUEST: "LOGIN_REQUEST",
+    SUCCESS: "LOGIN_SUCCESS",
+    FAILURE: "LOGIN_FAILURE",
+    
+  };
+  
+  export const LOGOUT ={
+    SUCCESS: "LOGOUT_SUCCESS",
+  }
