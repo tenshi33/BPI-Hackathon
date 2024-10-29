@@ -6,12 +6,12 @@ const querySchema = new mongoose.Schema({
     type: Number,
     unique: true,
   },
-  question: {
+  prompt: {
     type: String,
     required: true,
     trim: true,
   },
-  answer: {
+  reponseAI: {
     type: String,
     required: true,
     trim: true,
@@ -20,7 +20,7 @@ const querySchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-});
+},{ collection: 'chatbotHistory' });
 
 const userDataSchema = new mongoose.Schema({
   userID: {
@@ -31,6 +31,14 @@ const userDataSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
   },
   age: {
     type: Number,
@@ -82,9 +90,8 @@ const userDataSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-});
+},{ collection: 'UserData' });
 
-// Apply auto-increment plugin to the 'querySchema' and 'userDataSchema'
 querySchema.plugin(mongooseSequence, { inc_field: 'query_count' });
 userDataSchema.plugin(mongooseSequence, { inc_field: 'userID' });
 

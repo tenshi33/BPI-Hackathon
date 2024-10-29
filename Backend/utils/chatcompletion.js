@@ -18,7 +18,7 @@ async function chatcompletion(message) {
       ],
       // model: 'llama3.2:1b',
       model: 'gpt-4o-mini', 
-    });
+    }); 
     console.log(completion.choices[0].message.content);
     return completion.choices[0].message.content;
   } catch (error) {

@@ -11,10 +11,10 @@ async function getAll(){
 async function postChatCompletion(prompt){
     try {
         const reponseAI = await chatcompletion(prompt)
-        await Query.create({ prompt, answer });
+        await Query.create({ prompt, reponseAI });
         return reponseAI;
     } catch (error) {
-        throw new error(error.message);
+        throw new Error(error.message);
     }
 
 }

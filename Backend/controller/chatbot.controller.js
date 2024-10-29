@@ -19,9 +19,9 @@ function getAll(req, res) {
 }
 
 function postChatCompletion(req, res) {
-    const data = req.body.answer;
-    console.log(data)
-    chatbot.postChatCompletion(data)
+    const prompt = req.body.prompt;
+    console.log(prompt)
+    chatbot.postChatCompletion(prompt)
         .then((result) => {
             return res.status(200).json(result);
         })
