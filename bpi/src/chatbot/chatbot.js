@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
-
+//import { TypeAnimation } from "react-type-animation";
 
 // Redux
 import { connect } from "react-redux";
@@ -11,6 +11,7 @@ const Chatbot = (props) => {
   const navigate = useNavigate()
   const { userID: urlUserID } = useParams();
   const [userInput, setUserInput] = useState("");
+  const [chatHistory, setchatHistory] = useState([])
 
   useEffect(() => {
     props.getData();
@@ -23,31 +24,38 @@ const Chatbot = (props) => {
   }, [props.userID, urlUserID, navigate]);
 
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (userInput.trim()) {
-      props.postChatCompletion(userInput);
+      await props.postChatCompletion(userInput);
       setUserInput("");
+      setchatHistory({
+        propmt :userInput,
+        responseAI: props.message
+      })
     }
   };
 
   function logout() {
         localStorage.removeItem('userID'); 
         props.logoutUser()
-        navigate(`/`);
+        navigate(`/Login`);
 
 }
+
+  function userForm(){
+
+    navigate(`/protected/form/${props.userID}`);
+  }
 
 
   return (
     <div className="chatbot-container">
       <div className="chat-history">
-        {props.data
-          ?.slice()
-          .reverse()
+        {chatHistory
           .map((element, index) => (
             <div key={index} className="chat-message">
-              <p>User: {element.question}</p>
-              <p>AI: {element.answer}</p>
+              <p>User: {element.prompt}</p>
+              <p>AI: {props.message}</p>
             </div>
           ))}
       </div>
@@ -64,16 +72,19 @@ const Chatbot = (props) => {
             }
           }}
         />
-        <button onClick={handleSend}>Send</button>
+        <button onClick={()=>handleSend()}>Send</button>
       </div>
       <button onClick={logout}>LOGOUT</button>
+      <button onClick={userForm}>userForm</button>
+
     </div>
   );
 };
 
 const mapState = (state) => ({
   data: state.reducerName.data,
-  userID: state.reducerName.userID
+  userID: state.reducerName.userID,
+  message: state.reducerName.message
 });
 
 const actionCreators = {

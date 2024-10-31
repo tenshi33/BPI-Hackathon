@@ -1,11 +1,13 @@
-import { GET_DATA, SEND_MESSAGE,LOGIN,LOGOUT } from './constants';
+import { GET_DATA, SEND_MESSAGE,LOGIN,LOGOUT,REGISTER,SEND_USER_FORM } from './constants';
 import { serviceFunction } from './services';
 
 export const actionName = {
   getData,
   postChatCompletion,
   loginUser,
-  logoutUser
+  logoutUser,
+  registerUser,
+  postUserForm
 };
 
 function getData() {
@@ -62,6 +64,33 @@ function postChatCompletion(message) {
     }
 }
 
+function postUserForm(userForm) {
+  return (dispatch) => {
+      dispatch(request());
+
+      serviceFunction.postUserForm(userForm).then(
+          (response) => {
+              dispatch(success(response)); // Here we use response.message
+          },
+          (error) => {
+              dispatch(failure(error.toString()));
+          }
+      );
+  };
+
+  function request() {
+      return { type: SEND_USER_FORM.REQUEST };
+  }
+
+  function success(form) {
+      return { type: SEND_USER_FORM.SUCCESS, form };
+  }
+
+  function failure(error) {
+      return { type: SEND_USER_FORM.FAILURE, error };
+  }
+}
+
 
 function loginUser(data) {
   return (dispatch) => {
@@ -98,3 +127,31 @@ function logoutUser() {
   }
 }
 
+function registerUser(data) {
+  return (dispatch) => {
+      dispatch(request());
+
+      serviceFunction.registerUser(data).then(
+          (response) => {
+              console.log(response)
+              localStorage.setItem('userID', response);
+              dispatch(success(response)); 
+          },
+          (error) => {
+              dispatch(failure(error.toString()));
+          }
+      );
+  };
+
+  function request() {
+      return { type: REGISTER.REQUEST };
+  }
+
+  function success(regResponse) {
+      return { type: REGISTER.SUCCESS, regResponse };
+  }
+
+  function failure(error) {
+      return { type: REGISTER.FAILURE, error };
+  }
+}

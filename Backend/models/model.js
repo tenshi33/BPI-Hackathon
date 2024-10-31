@@ -21,24 +21,19 @@ const querySchema = new mongoose.Schema({
 const userDataSchema = new mongoose.Schema({
   fullName: {
     type: String,
-    required: true,
     trim: true,
   },
   email: {
     type: String,
-    required: true,
   },
   password: {
     type: String,
-    required: true,
   },
   phone: {
     type: Number,
-    required: true,
   },
   age: {
     type: Number,
-    required: true,
   },
   income: {
     type: Number,

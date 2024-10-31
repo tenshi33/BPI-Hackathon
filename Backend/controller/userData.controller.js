@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 const data = require('../service/userData.service');
 
-router.get('/getAll', getAll)
-router.get('/filterUserData', filterUserData)
-router.post('/register', registerUser)
-router.post('/login', loginUser)
-router.put('/update', editUserData)
+router.get('/getAll', getAll);
+router.get('/get/:userID', filterUserData);
+router.post('/register', registerUser);
+router.post('/login', loginUser);
+router.put('/update', editUserData);
 
 function getAll(req, res) {
     data.getAll()
@@ -14,59 +14,56 @@ function getAll(req, res) {
             return res.status(200).json(result);
         })
         .catch((err) => {
-            return res.status(500).json({ error: err.message }); 
+            return res.status(500).json({ error: err.message });
         });
 }
 
 function filterUserData(req, res) {
-    const userID = req.body.userID;
+    const userID = req.params.userID;
+    console.log(userID);
     data.filterUserData(userID)
         .then((result) => {
             return res.status(200).json(result);
         })
         .catch((err) => {
-            return res.status(500).json({ error: err.message }); 
+            return res.status(500).json({ error: err.message });
         });
 }
 
 function registerUser(req, res) {
     const user = req.body;
-    console.log(user)
+    console.log(user);
     data.registerUser(user)
         .then((result) => {
             return res.status(200).json(result);
         })
         .catch((err) => {
-            return res.status(500).json({ error: err.message }); 
+            return res.status(500).json({ error: err.message });
         });
 }
 
-
 function editUserData(req, res) {
     const updatedUser = req.body;
-    console.log(updatedUser)
+    console.log(updatedUser);
     data.editUserData(updatedUser)
         .then((result) => {
             return res.status(200).json(result);
         })
         .catch((err) => {
-            return res.status(500).json({ error: err.message }); 
+            return res.status(500).json({ error: err.message });
         });
 }
 
 function loginUser(req, res) {
     const User = req.body;
-    console.log(User)
+    console.log(User);
     data.loginUser(User)
         .then((result) => {
             return res.status(200).json(result);
         })
         .catch((err) => {
-            return res.status(500).json({ error: err.message }); 
+            return res.status(500).json({ error: err.message });
         });
 }
 
-
-
-
-module.exports = router; 
+module.exports = router;

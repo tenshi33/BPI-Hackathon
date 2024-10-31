@@ -11,11 +11,6 @@ const Login = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await props.loginUser({ email, password });
-        if(props.userID){
-         console.log(props.userID, "login form")
-         navigate(`/protected/${props.userID}`);
-         
-        }
     };
 
     useEffect(() => {

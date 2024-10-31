@@ -8,18 +8,27 @@ async function getAll(){
 
 async function filterUserData(userID){
     return await Data.find({
-        userID : userID
+        _id : userID
     })
 }
 
-async function registerUser(data){
-    return await Data.create(data)
+async function registerUser(user) {
+    console.log(user);
+    const exist = await Data.findOne({ email: user.email });
+    
+    if (exist) {
+        throw new Error("User already Taken"); 
+    }
+    
+    return await Data.create(user);
 }
+
+
 
 
 async function editUserData(data){
     return await Data.updateOne(
-        {email: data.email},
+        {_id: data._id},
         {$set : data},
         { upsert: true }
     )
@@ -39,7 +48,7 @@ async function loginUser(data) {
 
 
 
-module.exports = {
+module.exports = {  
     getAll,
     filterUserData,
     registerUser,

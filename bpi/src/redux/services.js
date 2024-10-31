@@ -1,7 +1,9 @@
 export const serviceFunction = {
     getData,
     postChatCompletion,
-    loginUser
+    loginUser,
+    registerUser,
+    postUserForm
   };
   
   function getData() {
@@ -12,24 +14,39 @@ export const serviceFunction = {
       },
     };
   
-    return fetch(`http://localhost:3002/api/chathistory/query`, requestOptions)
+    return fetch(`http://localhost:3002/v1/rest/chatbot/getAll`, requestOptions)
       .then(handleResponse);
   }
   
-  function postChatCompletion(message) {
+  function postChatCompletion(prompt) {
+    console.log({prompt:prompt}, "service")
     const requestOptions = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
 
         },
-        body: JSON.stringify({message:message}),
+        body: JSON.stringify({prompt:prompt}),
       };
   
-    return fetch(`http://localhost:3002/api/chatcompletion`, requestOptions)
+    return fetch(`http://localhost:3002/v1/rest/chatbot/prompt`, requestOptions)
       .then(handleResponse);
   }
+  
+  function postUserForm(prompt) {
+    console.log({prompt:prompt}, "service")
+    const requestOptions = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
 
+        },
+        body: JSON.stringify({prompt:prompt}),
+      };
+  
+    return fetch(`http://localhost:3002/v1/rest/users/update`, requestOptions)
+      .then(handleResponse);
+  }
   
   function loginUser(data) {
     const requestOptions = {
@@ -42,6 +59,20 @@ export const serviceFunction = {
       };
   
     return fetch(`http://localhost:3002/v1/rest/users/login`, requestOptions)
+      .then(handleResponse);
+  }
+
+  function registerUser(data) {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+
+        },
+        body: JSON.stringify(data),
+      };
+  
+    return fetch(`http://localhost:3002/v1/rest/users/register`, requestOptions)
       .then(handleResponse);
   }
 

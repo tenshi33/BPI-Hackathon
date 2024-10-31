@@ -20,7 +20,21 @@
     FAILURE: "LOGIN_FAILURE",
     
   };
+
+  export const REGISTER = {
+    REQUEST: "REGISTER_REQUEST",
+    SUCCESS: "REGISTER_SUCCESS",
+    FAILURE: "REGISTER_FAILURE",
+    
+  };
   
   export const LOGOUT ={
     SUCCESS: "LOGOUT_SUCCESS",
+  }
+
+
+  export const SEND_USER_FORM  = {
+    SUCCESS : "SEND_USER_FORM_SUCCESS",
+    REQUEST : "SEND_USER_FORM",
+    FAILURE : "SEND_USER_FORM_FAILURE"
   }
