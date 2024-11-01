@@ -9,29 +9,32 @@ import { actionName } from "../redux/actions";
 
 const Chatbot = (props) => {
   const navigate = useNavigate()
-  const { userID: urlUserID } = useParams();
+  const  idUrl  = useParams();
   const [userInput, setUserInput] = useState("");
-  const [chatHistory, setchatHistory] = useState([])
+  //const [chatHistory, setchatHistory] = useState([])
 
   useEffect(() => {
     props.getData();
   }, [props, props.message]);
 
   useEffect(() => {
-    if (props.userID !== urlUserID) {
+    console.log(idUrl)
+    console.log(props.userID)
+    if (props.userID === idUrl) {
       navigate("/401");
   }
-  }, [props.userID, urlUserID, navigate]);
+  }, [props.userID, idUrl, navigate]);
 
 
   const handleSend = async () => {
     if (userInput.trim()) {
-      await props.postChatCompletion(userInput);
+      console.log(idUrl, "handle send")
+      await props.postChatCompletion(userInput,idUrl);
       setUserInput("");
-      setchatHistory({
-        propmt :userInput,
-        responseAI: props.message
-      })
+      // setchatHistory({
+      //   propmt :userInput,
+      //   responseAI: props.message
+      // })
     }
   };
 
@@ -51,11 +54,11 @@ const Chatbot = (props) => {
   return (
     <div className="chatbot-container">
       <div className="chat-history">
-        {chatHistory
+        {props.data
           .map((element, index) => (
             <div key={index} className="chat-message">
               <p>User: {element.prompt}</p>
-              <p>AI: {props.message}</p>
+              <p>AI: {element.reponseAI}</p>
             </div>
           ))}
       </div>

@@ -18,15 +18,15 @@ export const serviceFunction = {
       .then(handleResponse);
   }
   
-  function postChatCompletion(prompt) {
-    console.log({prompt:prompt}, "service")
+  function postChatCompletion(prompt,userData) {
+    console.log(prompt,userData.userID, "service")
     const requestOptions = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
 
         },
-        body: JSON.stringify({prompt:prompt}),
+        body: JSON.stringify({prompt:prompt, userID:userData.userID}),
       };
   
     return fetch(`http://localhost:3002/v1/rest/chatbot/prompt`, requestOptions)
@@ -35,7 +35,7 @@ export const serviceFunction = {
   
   function postUserForm(prompt) {
     console.log({prompt:prompt}, "service")
-    const requestOptions = {
+    const requestOptions = {  
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -8,13 +8,12 @@ const OpenAI = require('openai');
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-async function chatcompletion(message) {
+async function chatcompletion(message,userData) {
   try {
     const completion = await openai.chat.completions.create({
       messages: [
-        { role: 'system', content: 'You are a helpful assistant.' },
+        { role: 'system', content: userData },
         { role: 'user', content: message },
-        { role: 'system', content: 'Summary, Make it at least 1 sentence' }
       ],
       // model: 'llama3.2:1b',
       model: 'gpt-4o-mini', 

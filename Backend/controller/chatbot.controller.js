@@ -7,7 +7,6 @@ router.post('/prompt',postChatCompletion)
 // router.put('/update', editTodoItem)
 
 function getAll(req, res) {
-    console.log("hellow")
     chatbot.getAll()
         .then((result) => {
             return res.status(200).json(result);
@@ -18,9 +17,9 @@ function getAll(req, res) {
 }
 
 function postChatCompletion(req, res) {
-    const prompt = req.body.prompt;
-    console.log(prompt)
-    chatbot.postChatCompletion(prompt)
+    const {prompt,userID} = req.body;
+    console.log(prompt,userID)
+    chatbot.postChatCompletion(prompt,userID)
         .then((result) => {
             return res.status(200).json(result);
         })

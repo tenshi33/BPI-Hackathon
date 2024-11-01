@@ -37,11 +37,11 @@ function getData() {
   }
 }
 
-function postChatCompletion(message) {
+function postChatCompletion(message, userID) {
     return (dispatch) => {
         dispatch(request());
 
-        serviceFunction.postChatCompletion(message).then(
+        serviceFunction.postChatCompletion(message, userID).then(
             (response) => {
                 dispatch(success(response.message)); // Here we use response.message
             },
