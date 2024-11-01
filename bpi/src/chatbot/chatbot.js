@@ -14,8 +14,8 @@ const Chatbot = (props) => {
   //const [chatHistory, setchatHistory] = useState([])
 
   useEffect(() => {
-    props.getData();
-  }, [props, props.message]);
+    props.getData(idUrl);
+  }, [props, props.message, idUrl]);
 
   useEffect(() => {
     console.log(idUrl)
@@ -49,6 +49,7 @@ const Chatbot = (props) => {
 
     navigate(`/protected/form/${props.userID}`);
   }
+
 
 
   return (

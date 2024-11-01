@@ -10,11 +10,11 @@ export const actionName = {
   postUserForm
 };
 
-function getData() {
+function getData(idUrl) {
   return (dispatch) => {
     dispatch(request());
 
-    serviceFunction.getData().then(
+    serviceFunction.getData(idUrl).then(
       (data) => {
         dispatch(success(data));
       },
@@ -95,7 +95,7 @@ function postUserForm(userForm) {
 function loginUser(data) {
   return (dispatch) => {
       dispatch(request());
-
+    
       serviceFunction.loginUser(data).then(
           (response) => {
               console.log(response)
@@ -122,10 +122,12 @@ function loginUser(data) {
 }
 
 function logoutUser() {
-  return (dispatch) => {
-      dispatch({type : LOGOUT.SUCCESS});
-  }
-}
+    return (dispatch) => {
+        dispatch({ type: LOGOUT.SUCCESS });
+      }
+    }
+
+  
 
 function registerUser(data) {
   return (dispatch) => {

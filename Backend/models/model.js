@@ -11,6 +11,10 @@ const querySchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  userID : {
+    type: String,
+    required: true
+  },
   reponseAI: {
     type: String,
     required: true,

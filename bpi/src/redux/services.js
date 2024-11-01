@@ -6,7 +6,7 @@ export const serviceFunction = {
     postUserForm
   };
   
-  function getData() {
+  function getData(idUrl) {
     const requestOptions = {
       method: 'GET',
       headers: {
@@ -14,7 +14,7 @@ export const serviceFunction = {
       },
     };
   
-    return fetch(`http://localhost:3002/v1/rest/chatbot/getAll`, requestOptions)
+    return fetch(`http://localhost:3002/v1/rest/chatbot/getAll/${idUrl.userID}`, requestOptions)
       .then(handleResponse);
   }
   

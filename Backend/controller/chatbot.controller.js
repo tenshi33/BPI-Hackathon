@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const chatbot = require('../service/chatbot.service.js');
 
-router.get('/getAll', getAll)
+router.get('/getAll/:userID', getAll)
 router.post('/prompt',postChatCompletion)
 // router.put('/update', editTodoItem)
 
 function getAll(req, res) {
-    chatbot.getAll()
+    const userID = req.params.userID;
+    chatbot.getAll(userID)
         .then((result) => {
             return res.status(200).json(result);
         })

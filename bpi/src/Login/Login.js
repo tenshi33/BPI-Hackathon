@@ -15,6 +15,7 @@ const Login = (props) => {
 
     useEffect(() => {
         if (props.userID) {
+            
             navigate(`/protected/${props.userID}`);
         }
         console.log(props.userID)
@@ -42,7 +43,7 @@ const Login = (props) => {
 
 const mapState = (state) => ({
     userID: state.reducerName.userID, 
-
+    data : state.reducerName.data
 });
 
 const actionCreators = {

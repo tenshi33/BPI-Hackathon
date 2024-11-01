@@ -1,4 +1,4 @@
-import { GET_DATA, SEND_MESSAGE, LOGIN , LOGOUT, REGISTER, SEND_USER_FORM} from './constants';
+import { GET_DATA, SEND_MESSAGE, LOGIN , LOGOUT, REGISTER, SEND_USER_FORM } from './constants';
 
 const initialState = {      
   data: [],  
@@ -50,11 +50,12 @@ export function reducerName(state = initialState, action) {
           loading: true,
         };
       case LOGIN.SUCCESS:
-        console.log('Reducer - UserID received:', action.userID);
+        console.log('Reducer - UserID received:', action.userID,);
         return {
           ...state,
           loading: false,
           userID: action.userID,
+          data : []
         };
       case LOGIN.FAILURE:
         return {
@@ -98,6 +99,7 @@ export function reducerName(state = initialState, action) {
             loading: false,
             error : action.error
           }
+
         case SEND_USER_FORM:
           return {
             ...state,

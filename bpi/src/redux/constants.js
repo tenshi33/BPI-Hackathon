@@ -38,3 +38,8 @@
     REQUEST : "SEND_USER_FORM",
     FAILURE : "SEND_USER_FORM_FAILURE"
   }
+
+
+  export const CLEAR = {
+    SUCCESS : "CLEAR"
+  }
