@@ -15,7 +15,7 @@ const Chatbot = (props) => {
 
   useEffect(() => {
     props.getData(idUrl);
-  }, [props, props.message, idUrl]);
+  }, [props, props.message, props.data]);
 
   useEffect(() => {
     console.log(idUrl)

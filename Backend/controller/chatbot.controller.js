@@ -19,9 +19,9 @@ function getAll(req, res) {
 
 function postChatCompletion(req, res) {
     const {prompt,userID} = req.body;
-    console.log(prompt,userID)
     chatbot.postChatCompletion(prompt,userID)
         .then((result) => {
+            console.log(result, "return")
             return res.status(200).json(result);
         })
         .catch((err) => {
