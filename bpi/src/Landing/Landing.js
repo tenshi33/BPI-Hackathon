@@ -17,7 +17,7 @@ const Landing = ({ loginUser }) => {
     return (
         <div className="landing-page">
             <header>
-                <h1>Welcome to Our Platform</h1>
+                <h1 className='text-red-800 text-center'>Welcome to Our Platform</h1>
             </header>
             <div className="buttons">
                 <button onClick={handleLogin}>Login</button>

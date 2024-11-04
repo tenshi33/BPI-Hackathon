@@ -8,6 +8,8 @@ import Unauthorized from './401/Unanuthorized';
 import { connect } from "react-redux";
 import { UserForm } from './userForm/userForm';
 
+import '../src/index.css'
+
 const App = (props) => {
     return (
         <div>
