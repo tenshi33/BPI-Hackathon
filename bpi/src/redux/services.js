@@ -3,7 +3,8 @@ export const serviceFunction = {
     postChatCompletion,
     loginUser,
     registerUser,
-    postUserForm
+    postUserForm,
+    reset
   };
   
   function getData(idUrl) {
@@ -45,6 +46,20 @@ export const serviceFunction = {
       };
   
     return fetch(`http://localhost:3002/v1/rest/users/update`, requestOptions)
+      .then(handleResponse);
+  }
+
+  function reset(userID) {
+    const requestOptions = {  
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+
+        },
+        body: JSON.stringify({userID}),
+      };
+  
+    return fetch(`http://localhost:3002/v1/rest/chatbot/reset`, requestOptions)
       .then(handleResponse);
   }
   

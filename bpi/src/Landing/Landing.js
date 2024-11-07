@@ -13,6 +13,7 @@ const Landing = ({ loginUser }) => {
     const handleRegister = () => {
         navigate("/register");
     };
+    
 
     return (
         <div className="landing-page">

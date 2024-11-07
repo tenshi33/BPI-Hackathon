@@ -11,6 +11,9 @@ const querySchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  oldConvo : {
+    type : Boolean
+  },
   userID : {
     type: String,
     required: true

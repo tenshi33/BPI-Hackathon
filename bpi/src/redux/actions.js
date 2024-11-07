@@ -1,4 +1,4 @@
-import { GET_DATA, SEND_MESSAGE,LOGIN,LOGOUT,REGISTER,SEND_USER_FORM } from './constants';
+import { GET_DATA, SEND_MESSAGE,LOGIN,LOGOUT,REGISTER,SEND_USER_FORM,RESET } from './constants';
 import { serviceFunction } from './services';
 
 export const actionName = {
@@ -7,7 +7,8 @@ export const actionName = {
   loginUser,
   logoutUser,
   registerUser,
-  postUserForm
+  postUserForm,
+  reset
 };
 
 function getData(idUrl) {
@@ -156,4 +157,32 @@ function registerUser(data) {
   function failure(error) {
       return { type: REGISTER.FAILURE, error };
   }
+}
+
+
+function reset(userID){
+    return (dispatch) => {
+        dispatch(request());
+  
+        serviceFunction.reset(userID).then(
+            (response) => {
+                dispatch(success(response)); 
+            },
+            (error) => {
+                dispatch(failure(error.toString()));
+            }
+        );
+    };
+  
+    function request() {
+        return { type: RESET.REQUEST };
+    }
+  
+    function success(resetResponse) {
+        return { type: RESET.SUCCESS, resetResponse };
+    }
+  
+    function failure(error) {
+        return { type: RESET.FAILURE, error };
+    }
 }

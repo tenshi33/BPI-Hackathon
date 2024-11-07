@@ -43,3 +43,10 @@
   export const CLEAR = {
     SUCCESS : "CLEAR"
   }
+
+
+  export const RESET  = {
+    SUCCESS : "RESET_SUCCESS",
+    REQUEST : "RESET",
+    FAILURE : "RESET_FAILURE"
+  }

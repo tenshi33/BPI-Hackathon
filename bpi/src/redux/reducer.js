@@ -1,4 +1,4 @@
-import { GET_DATA, SEND_MESSAGE, LOGIN , LOGOUT, REGISTER, SEND_USER_FORM } from './constants';
+import { GET_DATA, SEND_MESSAGE, LOGIN , LOGOUT, REGISTER, SEND_USER_FORM,RESET } from './constants';
 
 const initialState = {      
   data: [],  
@@ -105,6 +105,24 @@ export function reducerName(state = initialState, action) {
             ...state,
             loading: true
           }
+          case RESET.SUCCESS:
+            return {
+              ...state,
+              loading: false,
+              form: action.form,
+            }
+            case RESET.FAILURE:
+              return {
+                ...state,
+                loading: false,
+                error : action.error
+              }
+    
+            case RESET:
+              return {
+                ...state,
+                loading: true
+              }
     default:
       return state;
   }
