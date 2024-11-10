@@ -7,3 +7,9 @@ body{
   overflow-x: hidden;
   background-color: #131010;
 }
+
+html{
+  scroll-behavior: smooth;
+
+}
+
