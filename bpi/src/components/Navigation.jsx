@@ -30,8 +30,8 @@ const Navigation = () => {
   const [isLogIn , setIsLogIn] = useState(false)
 
   return (
-   
-    <div className='flex  justify-between items-center py-8 text-sm w-full px-10 fixed z-50 max-w-7xl'  >
+   <div className='w-full fixed z-50 '>
+    <div className='flex  justify-between items-center py-8 text-sm  px-10  max-w-7xl m-auto'  >
         <h2 className='w-auto'>Logo</h2>
         <div className='w-7/12 flex justify-between'>
           <div className='w-40 flex justify-between'>
@@ -46,7 +46,7 @@ const Navigation = () => {
         </div>
         
     </div>
-
+    </div>
 
     
   )

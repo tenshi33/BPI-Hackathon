@@ -32,7 +32,6 @@ const Login = (props) => {
             <div className='min-h-lvh flex align-center relative justify-center py-36'>
                 <form onSubmit={handleSubmit} className=
                     'p-14 flex-col m-auto w-login-width h-login-height rounded-2xl bg-custom-gradient  backdrop-blur-md'>
-
                     <div className='grid gap-5'>
                         <h1 className='text-center  font-regular m-auto text-4xl max-w-48 mb-16'>Log in your account</h1>
                                 <input
@@ -41,7 +40,7 @@ const Login = (props) => {
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
                                     placeholder='Email'
-                                    className='w-input-width h-10 bg-input-bg text-slate-400  rounded-lg px-3 text-sm'/>
+                                    className='w-input-width border-none h-10 bg-input-bg text-slate-400  rounded-lg px-3 text-sm'/>
                         
                             <input
                                 type="password"
@@ -50,10 +49,10 @@ const Login = (props) => {
                                 required
                                 placeholder='Password'
 
-                            className='w-input-width h-10 bg-input-bg text-slate-400  rounded-lg px-3 text-sm'/>
+                            className='w-input-width h-10 border-none bg-input-bg text-slate-400  rounded-lg px-3 text-sm'/>
                     </div>
 
-                    <button type="submit" className='bg-login-btn hover:bg-fuchsia-950 duration-200 w-full h-12 rounded-lg mt-16 ' onClick={handleSubmit}>Login</button>
+                    <button type="submit" className='bg-login-btn hover:bg-fuchsia-950 duration-200 w-full h-12 rounded-lg mt-16 ' >Login</button>
                 </form>
 
                 <div className=" absolute flex items-center justify-center max-w-72 rounded-full ">

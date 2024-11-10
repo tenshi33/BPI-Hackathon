@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { connect } from "react-redux";
 import { actionName } from "../redux/actions";
 import Navigation from '../components/Navigation.jsx';
-
+import registerImage from '../assets/registerImage.png'
+import circle from '../assets/circle.png'
 
 
 const Register = (props) => {
@@ -29,59 +30,46 @@ const Register = (props) => {
 
    <Navigation/>
 
-   <div className='min-h-lvh grid place-items-center w-full '>
-        <div className="register-form border">
-          <h2>Register</h2>
-          <form onSubmit={handleSubmit}>
-            <label>Full Name</label>
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              required
-            />
+   <div className='w-full min-h-lvh py-28 relative'>
 
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
+       <div className='flex w-register-width h-register-height bg-custom-gradient m-auto items-center rounded-xl'>
+        <div className='w-1/2 h-full py-14'>
 
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
+          <div className='w-input-width m-auto'>
 
-            <label>Phone</label>
-            <input
-              type="text"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-            />
+            <h2 className='text-4xl w-40  mb-20	'>Create an account</h2>
+        
+              <form className='grid gap-input-gap text-sm font-light'>
+                <input
+                
+                
+                placeholder='Fullname' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
 
-            <label>Age</label>
-            <input
-              type="number"
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-              required
-            />
+                <input placeholder='Age' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
+                <input placeholder='Contact Number' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
+                <input placeholder='Email' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
+                <input placeholder='Password' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
+              </form>
 
-            <button type="submit">Register</button>
-          </form>
+              <button className='w-full h-11 bg-login-btn hover:bg-fuchsia-950 border-none mt-16 border rounded-xl'>Submit</button>
+
+          </div>
         </div>
-      </div>
+
+
+            <div className='w-1/2 h-full'>
+              <img className='rounded-3xl w-full h-full object-cover' src={registerImage} />
+            </div>
+          
+          </div>
+          <div className=" absolute flex items-center justify-center max-w-72 rounded-full top-14 left-10">
+                     <img className="animate-spin-slow  object-fill rounded-full blur-3xl bg-gradient-to-bl from-glow-primary to-glow-tertiary shadow-intense-glow filter mix-blend-color-dodge opacity-20" src={circle} alt="" />
+                </div>
+                
+                <div className=" absolute flex items-center justify-center max-w-lg rounded-full -right-10 -bottom-20 ">
+                     <img className=" animate-spin-slow object-fill rounded-full blur-3xl bg-gradient-to-r from-glow-primary via-glow-secondary to-glow-tertiary shadow-intense-glow filter mix-blend-color-dodge opacity-20" src={circle} alt="" />
+                </div>
+        </div>
     </div>
   );
 };

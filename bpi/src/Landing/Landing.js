@@ -12,16 +12,16 @@ import Star from '../assets/ai.png'
 const Landing = ({ loginUser }) => {
  
     return (
-    <div className=''>
+    <div className='w-full'>
 
     <Navigation/>
-    <div className='m-auto py-28 px-7 absolute  w-full max-w-7xl' >
+    <div className='m-auto py-28 px-7   w-full max-w-7xl' >
         
       <div className='flex relative  ' >
         <div className='flex flex-col gap-5 ml-5'>
           <h1 className='text-6xl text-white max-w-2xl' >Welcome to Project Sol <br />- Your Trusted Banking Chat Assistant</h1>
           <p className='text-white text-sm font-light max-w-2xl'>s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an un</p>
-          <button className='text-white  py-1 px-8  w-fit rounded-button'>Continue</button>
+          <button className='text-white  py-1 px-8  w-fit rounded-button border'>Continue</button>
         </div>
 
         <div className=" relative flex items-center justify-center max-w-md rounded-full -right-64">
@@ -52,7 +52,7 @@ const Landing = ({ loginUser }) => {
       </div>
 
 
-     <div className='flex m-auto  w-full gap-10 justify-center min-h-lvh items-end pt-52 '>
+     <div className='flex m-auto  w-full gap-10 justify-center  items-end  '>
         <Card star={Star}/>
         <Card star={Star}/>
         <Card star={Star}/>

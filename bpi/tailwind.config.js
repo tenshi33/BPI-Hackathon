@@ -13,18 +13,29 @@ module.exports = {
       },
       height:{
         'card-height': '450px',
-        'login-height': '510px'
+        'login-height': '510px',
+        'register-height': '739px',
+        'register': '40px'
       },
       width:{
         'card-width': '334px',
         'login-width': '466px',
-        'input-width': '360'
+        'input-width': '360px',
+        'register-width': '937px',
+        'register-input': '161px'
       },
       backgroundColor:{
         'input-bg': '#0D0D0D',
-        'login-btn': '#311A2E'
+        'login-btn': '#311A2E',
+        
       },
       backgroundImage: { 'custom-gradient': 'linear-gradient(to bottom, rgba(79, 40, 63, 0.18), rgba(35, 27, 27, 0.18))',
+      },
+      gap:{
+        'input-gap': '22px'
+      },
+      padding:{
+        'padding-btn': '20px'
       }
     },
   },
