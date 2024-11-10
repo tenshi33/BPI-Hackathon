@@ -41,14 +41,50 @@ const Register = (props) => {
         
               <form className='grid gap-input-gap text-sm font-light'>
                 <input
-                
+
+                  type="input"
+                  name="fullname"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  required
                 
                 placeholder='Fullname' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
 
-                <input placeholder='Age' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
-                <input placeholder='Contact Number' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
-                <input placeholder='Email' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
-                <input placeholder='Password' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
+                <input 
+                  type="number"
+                  name="age"
+                  value={formData.age}
+                  onChange={handleChange}
+                  required
+                
+                placeholder='Age' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
+                <input
+                
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                
+                placeholder='Contact Number' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
+                <input
+                
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                
+                 placeholder='Email' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
+                <input 
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                
+                placeholder='Password' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
+                
               </form>
 
               <button className='w-full h-11 bg-login-btn hover:bg-fuchsia-950 border-none mt-16 border rounded-xl'>Submit</button>
