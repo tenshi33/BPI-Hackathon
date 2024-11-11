@@ -15,14 +15,18 @@ module.exports = {
         'card-height': '450px',
         'login-height': '510px',
         'register-height': '739px',
-        'register': '40px'
+        'register': '40px',
+        'input-height': '50px',
+        'input-field-height': '730px'
       },
       width:{
         'card-width': '334px',
         'login-width': '466px',
         'input-width': '360px',
         'register-width': '937px',
-        'register-input': '161px'
+        'register-input': '161px',
+        'input-width': '275px',
+        'input-field-width': '1075px'
       },
       backgroundColor:{
         'input-bg': '#0D0D0D',

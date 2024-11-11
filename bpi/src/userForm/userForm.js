@@ -1,7 +1,7 @@
 import React, { useState, } from 'react';
 import { connect } from "react-redux";
 import { actionName } from "../redux/actions";
-
+import Navigation from '../components/Navigation.jsx'
 function UserForm(props){
   const [formData, setFormData] = useState({
 /*     fullName: '',
@@ -34,101 +34,33 @@ function UserForm(props){
   };
 
   return (
-    <div className="User-form">
-      <h2>User Form</h2>
-      <form onSubmit={handleSubmit}>
-        <label>occupation</label>
-        <input
-          type="text"
-          name="occupation"
-          value={formData.occupation}
-          onChange={handleChange}
-          required
-        />
-
-        <label>income</label>
-        <input
-          type="number"
-          name="income"
-          value={formData.income}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Financial Goals</label>
-        <input
-          type="text"
-          name="financialGoals"
-          value={formData.financialGoals}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Loans Depts</label>
-        <input
-          type="number"
-          name="loansDepts"
-          value={formData.loansDepts}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Savings</label>
-        <input
-          type="number"
-          name="savings"
-          value={formData.savings}
-          onChange={handleChange}
-          required
-        />
-        
-        <label>businessName</label>
-        <input
-          type="text"
-          name="businessName"
-          value={formData.businessName}
-          onChange={handleChange}
-          required
-        />
-
-        <label>industry</label>
-        <input
-          type="text"
-          name="industry"
-          value={formData.industry}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Number of Employees</label>
-        <input
-          type="number"
-          name="employees"
-          value={formData.employees}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Revenue</label>
-        <input
-          type="number"
-          name="revenue"
-          value={formData.revenue}
-          onChange={handleChange}
-          required
-        />
-
-        <label>short Term Goals</label>
-        <input
-          type="number"
-          name="shortTermGoals"
-          value={formData.shortTermGoals}
-          onChange={handleChange}
-          required
-        />
-
-        <button type="submit">Register</button>
-      </form>
+    <div className='max-w-7xl m-auto'>
+      <Navigation/>
+      
+      <div className='w-input-field-width h-input-field-height m-auto rounded-2xl py-20 bg-custom-gradient'>
+          <div className='max-w-4xl m-auto flex flex-col gap-20'>
+              <div className='grid gap-4'>
+                  <h2 className='text-4xl'>Gather Data</h2>
+                  <p className='text-sm max-w-56 text-gray-400'>we need to gather data to specify the information need for this application </p>
+              </div>
+              <form action="" className='grid grid-rows-4 grid-flow-col gap-5 '>
+                  <input type="text" placeholder='Occupation'  className='bg-inputField h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm '/>
+                  <input type="text" placeholder='income'  className='bg-inputField h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm '/>
+                  <input type="text" placeholder='financial goals'  className='bg-inputField h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm '/>
+                  <input type="text" placeholder='Loan Debts'  className='bg-inputField h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm '/>
+                  <input type="text" placeholder='Business Name'  className='bg-inputField h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm '/>
+                  <input type="text" placeholder='Industry'  className='bg-inputField h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm '/>
+                  <input type="text" placeholder='Employees'  className='bg-inputField h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm '/>
+                  <input type="text" placeholder='Revenue'  className='bg-inputField h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm '/>
+                  <input type="text" placeholder='Savings'  className='bg-inputField h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm '/>
+                  <input type="text" placeholder='Short Term Goals'  className='bg-inputField h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm '/>
+                  <input type="text" placeholder='Long Term Goals'  className='bg-inputField h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm '/>
+              </form>
+              <div className='m-auto w-full  flex justify-center'>
+                  <button type='Submit' className='hover:bg-fuchsia-950 duration-500 m-auto  px-28 py-4 rounded-lg bg-login-btn' >Submit</button>
+              </div>
+          </div>
+      </div>
     </div>
   );
 };
