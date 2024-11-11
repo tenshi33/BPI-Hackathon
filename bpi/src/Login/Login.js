@@ -40,7 +40,7 @@ const Login = (props) => {
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
                                     placeholder='Email'
-                                    className='w-input-width border-none h-10 bg-input-bg text-slate-400  rounded-lg px-3 text-sm'/>
+                                    className='w-full border-none h-10 bg-input-bg text-slate-400  rounded-lg px-3 text-sm'/>
                         
                             <input
                                 type="password"
@@ -49,7 +49,7 @@ const Login = (props) => {
                                 required
                                 placeholder='Password'
 
-                            className='w-input-width h-10 border-none bg-input-bg text-slate-400  rounded-lg px-3 text-sm'/>
+                            className='w-full h-10 border-none bg-input-bg text-slate-400  rounded-lg px-3 text-sm'/>
                     </div>
 
                     <button type="submit" className='bg-login-btn hover:bg-fuchsia-950 duration-200 w-full h-12 rounded-lg mt-16 ' >Login</button>

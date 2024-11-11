@@ -90,6 +90,9 @@ const Chatbot = (props) => {
 
   return (
     <div className="chatbot-container">
+       <button onClick={logout}>LOGOUT</button>
+      <button onClick={userForm}>User Form</button>
+      <button onClick={reset}>Reset</button>
       <div className="chat-history">
         {currentConvo.map((element, index) => {
           if (element.user) {
@@ -110,8 +113,10 @@ const Chatbot = (props) => {
         })}
       </div>
 
+     
       <div className="input-container">
         <input
+          className='w-input-width h-10 border-none bg-input-bg text-slate-400  rounded-lg px-3 text-sm'
           type="text"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
@@ -125,34 +130,8 @@ const Chatbot = (props) => {
         <button onClick={handleSend}>Send</button>
       </div>
 
-      <button onClick={logout}>LOGOUT</button>
-      <button onClick={userForm}>User Form</button>
-      <button onClick={reset}>Reset</button>
+     
 
-      <div className="gradient-bg">
-        <svg
-          viewBox="0 0 100vw 100vw"
-          xmlns='http://www.w3.org/2000/svg'
-          className="noiseBg"
-        >
-          <filter id='noiseFilterBg'>
-            <feTurbulence
-              type='fractalNoise'
-              baseFrequency='0.6'
-              stitchTiles='stitch'
-            />
-          </filter>
-          <rect width='100%' height='100%' preserveAspectRatio="xMidYMid meet" filter='url(#noiseFilterBg)' />
-        </svg>
-        <div className="gradients-container">
-          <div className="g1"></div>
-          <div className="g2"></div>
-          <div className="g3"></div>
-          <div className="g4"></div>
-          <div className="g5"></div>
-          <div className="interactive" style={{ transform: `translate(${Math.round(curX)}px, ${Math.round(curY)}px)` }}></div>
-        </div>
-      </div>
     </div>
   );
 };
