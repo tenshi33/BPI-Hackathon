@@ -49,7 +49,7 @@ const Register = (props) => {
                   required
                 
                 placeholder='Fullname' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
-
+                
                 <input 
                   type="number"
                   name="age"

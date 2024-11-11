@@ -25,7 +25,7 @@ module.exports = {
         'input-width': '360px',
         'register-width': '937px',
         'register-input': '161px',
-        'input-width': '275px',
+        'input-width': '100%',
         'input-field-width': '1075px'
       },
       backgroundColor:{
