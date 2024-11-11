@@ -11,6 +11,15 @@ const Chatbot = (props) => {
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
+  const [currentConvo, setCurrentConvo] = useState([]);
+
+  useEffect(() => {
+    const savedConvo = JSON.parse(localStorage.getItem('currentConvo'));
+    if (savedConvo) {
+      setCurrentConvo(savedConvo);
+    }
+  }, []);
+
 
   useEffect(() => {
     props.getData(idUrl);
@@ -33,6 +42,10 @@ const Chatbot = (props) => {
   }, [tgX, tgY]);
 
   useEffect(() => {
+    localStorage.setItem('currentConvo', JSON.stringify(currentConvo));
+  }, [currentConvo]);
+
+  useEffect(() => {
     const handleMouseMove = (event) => {
       setTgX(event.clientX);
       setTgY(event.clientY);
@@ -42,8 +55,15 @@ const Chatbot = (props) => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  useEffect(() => {
+    if (props.message) {
+      setCurrentConvo(prevConvo => [...prevConvo, { ai: props.message }]);
+    }
+  }, [props.message]);
+
   const handleSend = async () => {
     if (userInput.trim()) {
+      setCurrentConvo(prevConvo => [...prevConvo, { user: userInput }]);
       await props.postChatCompletion(userInput, idUrl);
       setUserInput("");
     }
@@ -51,6 +71,7 @@ const Chatbot = (props) => {
 
   const logout = () => {
     localStorage.removeItem('userID');
+    localStorage.removeItem('currentConvo');
     props.logoutUser();
     navigate(`/Login`);
   };
@@ -59,19 +80,34 @@ const Chatbot = (props) => {
     navigate(`/protected/form/${props.userID}`);
   };
 
+
   const reset = () => {
     props.reset(idUrl);
+    setCurrentConvo([]);
+    localStorage.removeItem('currentConvo');
   };
+
 
   return (
     <div className="chatbot-container">
       <div className="chat-history">
-        {props.data.map((element, index) => (
-          <div key={index} className="chat-message">
-            <p>User: {element.prompt}</p>
-            <p>AI: {element.reponseAI}</p>
-          </div>
-        ))}
+        {currentConvo.map((element, index) => {
+          if (element.user) {
+            return (
+              <div key={index} className="chat-message-user">
+                <p>{element.user}</p>
+              </div>
+            );
+          }
+          if (element.ai) {
+            return (
+              <div key={index} className="chat-message-ai">
+                <p>{element.ai}</p>
+              </div>
+            );
+          }
+          return null; 
+        })}
       </div>
 
       <div className="input-container">
