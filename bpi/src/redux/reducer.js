@@ -2,7 +2,7 @@ import { GET_DATA, SEND_MESSAGE, LOGIN , LOGOUT, REGISTER, SEND_USER_FORM,RESET 
 
 const initialState = {      
   data: [],  
-  message: [],
+  message: "",
   userID: localStorage.getItem('userID') || "",
   loading: false, 
   error: null,    

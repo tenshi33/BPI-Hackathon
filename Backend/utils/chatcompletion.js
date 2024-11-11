@@ -16,7 +16,7 @@ async function chatcompletion(message,userData,history) {
                   ### Input:
                   ${message}
 
-                  ### Response:  N/A
+                  ### Response:
                   
                   `
     const completion = await openai.chat.completions.create({

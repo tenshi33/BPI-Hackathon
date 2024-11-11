@@ -44,7 +44,7 @@ function postChatCompletion(message, userID) {
 
         serviceFunction.postChatCompletion(message, userID).then(
             (response) => {
-                dispatch(success(response.message)); // Here we use response.message
+                dispatch(success(response)); // Here we use response.message
             },
             (error) => {
                 dispatch(failure(error.toString()));
