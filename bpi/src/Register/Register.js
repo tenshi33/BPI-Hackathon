@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { connect } from "react-redux";
 import { actionName } from "../redux/actions";
 import Navigation from '../components/Navigation.jsx';
 import registerImage from '../assets/registerImage.png'
 import circle from '../assets/circle.png'
+import { useNavigate } from 'react-router-dom';
 
 
 const Register = (props) => {
-  const [formData, setFormData] = useState({
+  const navigate = useNavigate()
+  const initialF = {
     fullName: '',
     email: '',
     password: '',
     phone: '',
     age: '',
-  });
+  }
+  const [formData, setFormData] = useState(initialF);
+
+  useEffect(() => {
+    if (localStorage.getItem('userID') ) {
+        
+        navigate(`/protected/${props.userID}`);
+    }
+    console.log(props.userID)
+}, [props.userID, navigate]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,6 +34,7 @@ const Register = (props) => {
     e.preventDefault();
     console.log(formData);
     props.registerUser(formData)
+    setFormData(initialF)
   };
 
   return (
@@ -39,11 +51,11 @@ const Register = (props) => {
 
             <h2 className='text-4xl w-40  mb-20	'>Create an account</h2>
         
-              <form className='grid gap-input-gap text-sm font-light'>
+              <form className='grid gap-input-gap text-sm font-light'onSubmit={handleSubmit}>
                 <input
 
                   type="input"
-                  name="fullname"
+                  name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
                   required
@@ -84,17 +96,18 @@ const Register = (props) => {
                 required
                 
                 placeholder='Password' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
+                <button className='w-full h-11 bg-login-btn hover:bg-fuchsia-950 border-none mt-16 border rounded-xl' type='submit'>Submit</button>
+
                 
               </form>
 
-              <button className='w-full h-11 bg-login-btn hover:bg-fuchsia-950 border-none mt-16 border rounded-xl'>Submit</button>
-
+            
           </div>
         </div>
 
 
             <div className='w-1/2 h-full'>
-              <img className='rounded-3xl w-full h-full object-cover' src={registerImage} />
+              <img className='rounded-3xl w-full h-full object-cover' src={registerImage} alt='Register Page'/>
             </div>
           
           </div>

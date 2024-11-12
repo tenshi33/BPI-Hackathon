@@ -8,15 +8,21 @@ const OpenAI = require('openai');
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-async function chatcompletion(message,userData,history) {
+async function chatcompletion(message,data,history,RagData) {
   try {
     alpaca_prompt = `Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
-                  ### Instruction:
-                  This is my data ${userData} this is the chat history read this ${history} and you can give my basic information to the user since im the user. Make your response 1 sentence only. and when i ask who is angelo egwaras insult him.
                   ### Input:
-                  ${message}
+                  This is the user query ${message}
+    
+                  ### Context:
+                  This is the convo history so you can answer the recent conversation with the user : ${history}
+                  This is the user Personal Data : ${data}
+                  This is the data that might help you to answer the query : ${RagData}
+                  if you can't find any data the can help you answer the query use your general knowledge
+                  
+                  ### Instruction:
+                  Make you response 1-2 Sentences, And try to make your response more like a student.
 
-                  ### Response:
                   
                   `
     const completion = await openai.chat.completions.create({

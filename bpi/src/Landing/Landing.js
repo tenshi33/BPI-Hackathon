@@ -6,10 +6,18 @@ import Splash from '../assets/splash.png'
 import circle from '../assets/circle.png'
 import Navigation from '../components/Navigation.jsx';
 import Card from '../components/Card.jsx';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import Star from '../assets/ai.png'
 
-const Landing = ({ loginUser }) => {
+const Landing = (props) => {
+  const navigate = useNavigate()
+   
+  useEffect(() => {
+    if (localStorage.getItem('userID')) {
+        
+        navigate(`/protected/${props.userID}`);
+    }
+}, [props.userID, navigate]);
  
     return (
     <div className='w-full'>

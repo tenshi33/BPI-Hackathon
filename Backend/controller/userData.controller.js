@@ -43,7 +43,7 @@ function registerUser(req, res) {
 }
 
 function editUserData(req, res) {
-    const updatedUser = req.body;
+    const updatedUser = req.body.prompt;
     console.log(updatedUser);
     data.editUserData(updatedUser)
         .then((result) => {

@@ -15,9 +15,9 @@ const Login = (props) => {
         await props.loginUser({ email, password });
     };
     
- 
+    
     useEffect(() => {
-        if (props.userID) {
+        if (localStorage.getItem('userID') ) {
             
             navigate(`/protected/${props.userID}`);
         }

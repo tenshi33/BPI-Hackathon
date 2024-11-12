@@ -18,7 +18,7 @@ const querySchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  reponseAI: {
+  responseAI: {
     type: String,
     required: true,
     trim: true,
@@ -26,6 +26,7 @@ const querySchema = new mongoose.Schema({
 },{ collection: 'chatbotHistory' });
 
 const userDataSchema = new mongoose.Schema({
+
   fullName: {
     type: String,
     trim: true,
@@ -75,13 +76,30 @@ const userDataSchema = new mongoose.Schema({
   },
 },{ collection: 'UserData' });
 
+
+const embeddingSchema = new mongoose.Schema({
+  text: {
+    type: String,
+    required: true,
+  },
+  embedding: {
+    type: [Number],  // Assuming the embedding is a numeric array (like a vector)
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+},{ collection: 'embeddings' });
+
 querySchema.plugin(mongooseSequence, { inc_field: 'query_count' });
-userDataSchema.plugin(mongooseSequence, { inc_field: 'userID' });
 
 const Query = mongoose.model('Query', querySchema);
 const Data = mongoose.model('Data', userDataSchema);
+const Embedding = mongoose.model('Embedding', embeddingSchema)
 
 module.exports = {
   Data,
   Query,
+  Embedding,
 };

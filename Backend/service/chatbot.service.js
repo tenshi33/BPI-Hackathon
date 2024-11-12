@@ -1,6 +1,8 @@
 const {Query} = require('../models/model');
 const {Data} = require('../models/model');
 const chatcompletion = require('../utils/chatcompletion')
+const { storeEmbedding, searchEmbedding, getEmbedding } = require('../utils/Embedding');
+
 
 
 async function getAll(userID) {
@@ -10,22 +12,26 @@ async function getAll(userID) {
 
 
 
-async function postChatCompletion(prompt,userID){
+async function postChatCompletion(prompt, userID) {
     try {
-        const userData = await Data.find({_id: userID})
-        const history  = await Query.find({_id: userID}).limit(20).sort({ query_count: -1 });
-        console.log(userData, "ye")
-        const userDataText = JSON.stringify(userData);
-        const historyData = JSON.stringify(history);
-        const reponseAI = await chatcompletion(prompt,userDataText,historyData)
-        await Query.create({ prompt, reponseAI ,userID,oldConvo : false});
-        console.log(reponseAI)
-        return reponseAI;
+        const formatToSearch = `
+        ${userID} :${prompt}
+        `;
+        const PersonalData = await searchEmbedding(formatToSearch);
+        console.log(PersonalData, "Searched Item");
+
+        const responseAI = await chatcompletion(prompt, PersonalData); // Fixed typo here
+        const formatToStore = `
+        ${prompt} : ${responseAI}
+        `;
+
+        await storeEmbedding(formatToStore);
+        await Query.create({ prompt, responseAI, userID, oldConvo: false }); // Fixed typo here
+        return responseAI; // Fixed typo here
     } catch (error) {
-        console.log(error, "error")
+        console.log(error, "error");
         throw new Error(error.message);
     }
-
 }
 
 
