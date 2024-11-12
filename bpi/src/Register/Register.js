@@ -47,7 +47,7 @@ const Register = (props) => {
        <div className='flex w-register-width h-register-height bg-custom-gradient m-auto items-center rounded-xl'>
         <div className='w-1/2 h-full py-14'>
 
-          <div className='w-input-width m-auto'>
+          <div className='px-10 w-full m-auto'>
 
             <h2 className='text-4xl w-40  mb-20	'>Create an account</h2>
         
@@ -60,7 +60,7 @@ const Register = (props) => {
                   onChange={handleChange}
                   required
                 
-                placeholder='Fullname' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none'/>
+                placeholder='Fullname' className='h-register w-full   text-slate-600 bg-input-bg rounded-lg px-4 border-none '/>
                 
                 <input 
                   type="number"
@@ -109,15 +109,16 @@ const Register = (props) => {
             <div className='w-1/2 h-full'>
               <img className='rounded-3xl w-full h-full object-cover' src={registerImage} alt='Register Page'/>
             </div>
-          
+    
           </div>
+
           <div className=" absolute flex items-center justify-center max-w-72 rounded-full top-14 left-10">
                      <img className="animate-spin-slow  object-fill rounded-full blur-3xl bg-gradient-to-bl from-glow-primary to-glow-tertiary shadow-intense-glow filter mix-blend-color-dodge opacity-20" src={circle} alt="" />
-                </div>
+          </div>
                 
-                <div className=" absolute flex items-center justify-center max-w-lg rounded-full -right-10 -bottom-20 ">
+           <div className=" absolute flex items-center justify-center max-w-lg rounded-full -right-10 -bottom-20 ">
                      <img className=" animate-spin-slow object-fill rounded-full blur-3xl bg-gradient-to-r from-glow-primary via-glow-secondary to-glow-tertiary shadow-intense-glow filter mix-blend-color-dodge opacity-20" src={circle} alt="" />
-                </div>
+           </div>
         </div>
     </div>
   );

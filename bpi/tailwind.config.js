@@ -9,7 +9,8 @@ module.exports = {
         'spin-slow': 'spin 40s linear infinite', // Adjust duration here
       },
       borderRadius:{
-        'button': '38px'
+        'button': '38px',
+        'Button-radius': '20px'
       },
       height:{
         'card-height': '450px',
@@ -31,9 +32,10 @@ module.exports = {
       backgroundColor:{
         'input-bg': '#0D0D0D',
         'login-btn': '#311A2E',
+        'background-gray-opacity': 'rgba(50, 49, 49, 0.5)'
         
       },
-      backgroundImage: { 'custom-gradient': 'linear-gradient(to bottom, rgba(79, 40, 63, 0.18), rgba(35, 27, 27, 0.18))',
+      backgroundImage: { 'custom-gradient': 'linear-gradient(to bottom, rgba(79, 40, 63, 0.40), rgba(35, 27, 27, 0.18))',
       },
       gap:{
         'input-gap': '22px'
@@ -43,6 +45,9 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')({ nocompatible: true }),
+    function({ addUtilities }) { const newUtilities = { 'input:-webkit-autofill': { '-webkit-box-shadow': '0 0 0 1000px hsl(var(--background)) inset !important', '-webkit-text-fill-color': 'hsl(var(--foreground)) !important', }, }; addUtilities(newUtilities) }
+  ],
 }
 
