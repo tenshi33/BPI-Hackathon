@@ -23,17 +23,6 @@ async function registerUser(user) {
             
         }else{
             const result = await Data.create(user);
-            const formattedResult = {
-                userID: result._id,
-                fullName: result.fullName,
-                email: result.email,
-                password: result.password,
-                phone: result.phone,
-                age: result.age,
-                __v: result.__v
-              };
-              
-            await storeEmbedding(JSON.stringify(formattedResult))
             return result
         }
         
@@ -71,34 +60,12 @@ async function registerUser(user) {
 
 
 async function editUserData(user){
-    console.log(user, " USERRRRRRRRRRRRRr")
-    const formatUserForEmbedding = `
-    _id: "${user._id || 'N/A'}",
-    occupation: "${user.occupation || 'N/A'}",
-    income: "${user.income || 'N/A'}",
-    financialGoals: "${user.financialGoals || 'N/A'}",
-    loansDebts: "${user.loansDebts || 'N/A'}",
-    savings: "${user.savings || 'N/A'}",
-    businessName: "${user.businessName || 'N/A'}",
-    industry: "${user.industry || 'N/A'}",
-    employees: "${user.employees || 'N/A'}",
-    revenue: "${user.revenue || 'N/A'}",
-    shortTermGoals: "${user.shortTermGoals || 'N/A'}",
-    longTermGoals: "${user.longTermGoals || 'N/A'}"
-  `;
-  
-      
-
-    await storeEmbedding(formatUserForEmbedding)
-    console.log("hellooo")
-    console.log(embeddingData)
+    
     const result =  await Data.updateOne(
         {_id: user._id},
         {$set : user},
         { upsert: true }
     )
-    console.log("helloooo")
-    console.log(result)
     return result
 }
 

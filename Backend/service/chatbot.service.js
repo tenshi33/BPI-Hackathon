@@ -14,20 +14,13 @@ async function getAll(userID) {
 
 async function postChatCompletion(prompt, userID) {
     try {
-        const formatToSearch = `
-        ${userID} :${prompt}
-        `;
-        const PersonalData = await searchEmbedding(formatToSearch);
-        console.log(PersonalData, "Searched Item");
+        const userData = await Data.find({_id: userID});
+        const history = await Query.find({userID:userID, oldConvo : false})
+        console.log(history)
 
-        const responseAI = await chatcompletion(prompt, PersonalData); // Fixed typo here
-        const formatToStore = `
-        ${prompt} : ${responseAI}
-        `;
-
-        await storeEmbedding(formatToStore);
-        await Query.create({ prompt, responseAI, userID, oldConvo: false }); // Fixed typo here
-        return responseAI; // Fixed typo here
+        const responseAI = await chatcompletion(prompt,userData,history); 
+        await Query.create({ prompt, responseAI, userID, oldConvo: false }); 
+        return responseAI;
     } catch (error) {
         console.log(error, "error");
         throw new Error(error.message);

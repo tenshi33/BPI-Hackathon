@@ -7,12 +7,18 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // Get embedding for text using OpenAI
 async function getEmbedding(text) {
-  const response = await openai.embeddings.create({
-    model: "text-embedding-ada-002",
-    input: text,
-  });
-  return response.data[0].embedding;
+  try {
+    const response = await openai.embeddings.create({
+      model: "text-embedding-ada-002",
+      input: text,
+    });
+    return response.data[0].embedding;
+  } catch (error) {
+    console.error("Error fetching embedding:", error.message || error);
+    throw new Error("Failed to retrieve embedding.");
+  }
 }
+
 
 // Use this to store the vector data to database mongodb
 async function storeEmbedding(text) {
@@ -54,7 +60,7 @@ async function searchEmbedding(queryText) {
 
   for (let doc of embeddings) {
     const similarity = cosineSimilarity(queryEmbedding, doc.embedding);
-    if (similarity > 0.7) {  // How simlary the query and embedding data "0.7"
+    if (similarity > 0.8) {  // How simlary the query and embedding data "0.7"
       similarTexts.push({
         text: doc.text,
         similarity: similarity

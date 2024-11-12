@@ -8,16 +8,16 @@ const OpenAI = require('openai');
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-async function chatcompletion(message,data,history,RagData) {
+async function chatcompletion(message,userData,history) {
   try {
     alpaca_prompt = `Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
                   ### Input:
                   This is the user query ${message}
     
                   ### Context:
-                  This is the convo history so you can answer the recent conversation with the user : ${history}
-                  This is the user Personal Data : ${data}
-                  This is the data that might help you to answer the query : ${RagData}
+                  check the ${history} if the user have a question about the conversation, based on the query count highest will be the latest 
+                  This is our conversation : ${history}
+                  Focus on this user : ${userData}
                   if you can't find any data the can help you answer the query use your general knowledge
                   
                   ### Instruction:
