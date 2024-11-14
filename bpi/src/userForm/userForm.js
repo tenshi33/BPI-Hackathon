@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { actionName } from "../redux/actions";
-import Navigation from "../components/Navigation.jsx";
 import { useNavigate } from "react-router-dom";
 import circle from "../assets/circle.png";
 
@@ -32,15 +31,26 @@ function UserForm(props) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    props.postUserForm(formData);
+    
+    if (Object.values(formData).every(value => value.trim() !== "")) {
+      console.log(formData);
+      await props.postUserForm(formData);
+      navigate(`/protected/${props.userID}`);
+    } else {
+      console.log("Form is incomplete, cannot submit.");
+    }
   };
+  
+
+  const handleBack = () => {
+    navigate(`/protected/${props.userID}`);
+  }
 
   return (
-    <div className="max-w-7xl m-auto">
-      <Navigation />
+    <div className="max-w-7xl m-auto mt-10">
+
       <div className="w-input-field-width h-input-field-height m-auto rounded-2xl py-20 bg-custom-gradient">
         <div className="max-w-4xl m-auto flex flex-col gap-20">
           <div className="grid gap-4">
@@ -52,7 +62,6 @@ function UserForm(props) {
           </div>
           <form
             className="grid grid-rows-4 grid-flow-col gap-5"
-            onSubmit={handleSubmit}
           >
             <input
               name="occupation"
@@ -60,6 +69,7 @@ function UserForm(props) {
               placeholder="Occupation"
               className="bg-input-bg h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm"
               onChange={handleChange}
+              required
             />
             <input
               name="income"
@@ -67,6 +77,7 @@ function UserForm(props) {
               placeholder="Income"
               className="bg-input-bg h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm"
               onChange={handleChange}
+              required
             />
             <input
               name="financialGoals"
@@ -74,6 +85,7 @@ function UserForm(props) {
               placeholder="Financial Goals"
               className="bg-input-bg h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm"
               onChange={handleChange}
+              required
             />
             <input
               name="loansDepts"
@@ -81,6 +93,7 @@ function UserForm(props) {
               placeholder="Loan Debts"
               className="bg-input-bg h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm"
               onChange={handleChange}
+              required
             />
             <input
               name="businessName"
@@ -88,6 +101,7 @@ function UserForm(props) {
               placeholder="Business Name"
               className="bg-input-bg h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm"
               onChange={handleChange}
+              required
             />
             <input
               name="industry"
@@ -95,6 +109,7 @@ function UserForm(props) {
               placeholder="Industry"
               className="bg-input-bg h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm"
               onChange={handleChange}
+              required
             />
             <input
               name="employees"
@@ -102,6 +117,7 @@ function UserForm(props) {
               placeholder="Employees"
               className="bg-input-bg h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm"
               onChange={handleChange}
+              required
             />
             <input
               name="revenue"
@@ -109,6 +125,7 @@ function UserForm(props) {
               placeholder="Revenue"
               className="bg-input-bg h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm"
               onChange={handleChange}
+              required
             />
             <input
               name="savings"
@@ -116,6 +133,7 @@ function UserForm(props) {
               placeholder="Savings"
               className="bg-input-bg h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm"
               onChange={handleChange}
+              required
             />
             <input
               name="shortTermGoals"
@@ -123,6 +141,7 @@ function UserForm(props) {
               placeholder="Short Term Goals"
               className="bg-input-bg h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm"
               onChange={handleChange}
+              required
             />
             <input
               name="longTermGoals"
@@ -130,19 +149,31 @@ function UserForm(props) {
               placeholder="Long Term Goals"
               className="bg-input-bg h-input-height w-input-width rounded-lg px-7 text-white placeholder:text-slate-300 text-sm"
               onChange={handleChange}
+              required
             />
             <div>
-            <div className="m-auto w-full flex justify-center">
-              <button
-                className="hover:bg-fuchsia-950 duration-500 m-auto px-28 py-4 rounded-lg bg-login-btn"
-                type="submit"
-              >
-                Submit
-              </button>
-            </div>
+           
             </div>
             
           </form>
+
+          <div className="m-auto w-full flex justify-center">
+              <button
+                className="hover:bg-fuchsia-950 duration-500 m-auto px-28 py-4 rounded-lg bg-login-btn"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+              <button
+                className="hover:bg-fuchsia-950 duration-500 m-auto px-28 py-4 rounded-lg bg-login-btn"
+                type="submit"
+                onClick={handleBack}
+              >
+                Back
+              </button>
+              
+            </div>
         </div>
         <div className="absolute flex items-center justify-center max-w-72 rounded-full top-14 left-10">
           <img

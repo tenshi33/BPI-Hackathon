@@ -1,41 +1,51 @@
 const OpenAI = require('openai');
 
+const openai = new OpenAI({ 
+      baseURL: 'http://localhost:11434/v1/', 
+      apiKey: 'ollama'
+});
 
-// const openai = new OpenAI({ 
-//       baseURL: 'http://localhost:11434/v1/', 
-//       apiKey: 'ollama'
-// });
+// const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-async function chatcompletion(message,userData,history) {
+async function chatcompletion(message, userData, history) {
   try {
-    alpaca_prompt = `Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
+    let alpaca_prompt = `Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
                   ### Input:
-                  This is the user query ${message}
+                  This is the user query: ${message}
     
                   ### Context:
-                  check the ${history} if the user have a question about the conversation, based on the query count highest will be the latest 
-                  This is our conversation : ${history}
-                  Focus on this user : ${userData}
-                  if you can't find any data the can help you answer the query use your general knowledge
+                  Check the ${history} if the user has a question about the conversation, based on the query count where the highest will be the latest. 
+                  This is our conversation: ${history}
+                  Focus on this user: ${userData}
+                  If you can't find any data that can help answer the query, use your general knowledge.
                   
                   ### Instruction:
-                  Make you response 1-2 Sentences, And try to make your response more like a student.
-
-                  
-                  `
+                  Make your response 1-2 sentences, and try to make your response more like a student.
+                  `;
+    console.log(userData, "user data")
+    // Send the request to the OpenAI instance
     const completion = await openai.chat.completions.create({
       messages: [
-        { role: 'system', content: alpaca_prompt },
+        { role: 'user', content: alpaca_prompt },
       ],
-      // model: 'llama3.2:1b',
-      model: 'gpt-4o-mini', 
+      model: 'tfg-patatas/prototype',
     }); 
-    console.log(completion.choices[0].message.content);
-    return completion.choices[0].message.content;
+
+
+    const responseContent = completion.choices[0].message?.content;
+    if (responseContent) {
+      return responseContent;
+    } else {
+      return "No response from AI.";
+    }
   } catch (error) {
-    throw new Error(error.message) 
+    // Enhanced error logging
+    if (error.response) {
+      console.error("API Error:", error.response.data);
+    } else {
+      console.error("Error Message:", error.message);
+    }
+    throw new Error("Failed to get response from AI");
   }
 }
 
