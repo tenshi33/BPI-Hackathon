@@ -16,10 +16,9 @@ async function postChatCompletion(prompt, userID) {
     try {
         const userData = await Data.find({_id: userID});
         const history = await Query.find({userID:userID, oldConvo : false})
-        console.log(history)
-
-        const responseAI = await chatcompletion(prompt,userData,history); 
-        await Query.create({ prompt, responseAI, userID, oldConvo: false }); 
+        const RagData = await searchEmbedding(prompt)
+        const responseAI = await chatcompletion(prompt,userData,history,RagData); 
+        Query.create({ prompt, responseAI, userID, oldConvo: false }); 
         return responseAI;
     } catch (error) {
         console.log(error, "error");

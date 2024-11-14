@@ -1,7 +1,7 @@
 const { OpenAI } = require('openai');
 const {Embedding} = require('../models/model');
 const cosineSimilarity = require('cosine-similarity');
-require('dotenv').config();
+require('dotenv').config(); // Load environment variables from .env
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -60,7 +60,7 @@ async function searchEmbedding(queryText) {
 
   for (let doc of embeddings) {
     const similarity = cosineSimilarity(queryEmbedding, doc.embedding);
-    if (similarity > 0.8) {  // How simlary the query and embedding data "0.7"
+    if (similarity > 0.75) {  // How simlary the query and embedding data "0.7"
       similarTexts.push({
         text: doc.text,
         similarity: similarity
@@ -69,6 +69,8 @@ async function searchEmbedding(queryText) {
   }
   return similarTexts;
 }
+
+
 
 // Exporting all the functions
 module.exports = {
