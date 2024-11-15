@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { connect } from "react-redux";
 import { actionName } from "../redux/actions";
 import Navigation from '../components/Navigation.jsx';
-import registerImage from '../assets/registerImage.png'
+import registerImage from '../assets/registerImage.jpg'
 import circle from '../assets/circle.png'
 import { useNavigate } from 'react-router-dom';
 

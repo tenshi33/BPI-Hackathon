@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actionName } from "../redux/actions";
 import exitImage from "../assets/exit.png"
-
+import circle from '../assets/circle.png'
 const Chatbot = (props) => {
   const navigate = useNavigate();
   const idUrl = useParams();
@@ -69,47 +69,7 @@ const Chatbot = (props) => {
 
   return (
     <div className="chatbot-container">
-      {/* <button onClick={logout}>LOGOUT</button>
-      <button onClick={userForm}>User Form</button>
-      <button onClick={reset}>Reset</button> */}
-      {/* <div className="chat-history">
-        {currentConvo.map((element, index) => {
-          if (element.user) {
-            return (
-              <div key={index} className="chat-message-user">
-                <p>{element.user}</p>
-              </div>
-            );
-          }
-          if (element.ai) {
-            return (
-              <div key={index} className="chat-message-ai">
-                <p>{element.ai}</p>
-              </div>
-            );
-          }
-          return null; 
-        })}
-      </div>
-
-     
-      <div className="input-container flex border">
-        <input
-          className='w-input-width h-10 border-none bg-input-bg text-slate-400  rounded-lg px-3 text-sm'
-          type="text"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Type your message..."
-          onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              handleSend();
-            }
-          }}
-        />
-
-      <button onClick={handleSend}>Send</button>
-      </div> */}
-
+   
 
 
 <div className="m-auto max-w-5xl ">
@@ -182,7 +142,7 @@ const Chatbot = (props) => {
                 </button>
             </div>
         </div>
-            
+      
           </div>
         </div>
       </div>
