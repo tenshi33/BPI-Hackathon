@@ -8,6 +8,8 @@ import Unauthorized from './401/Unanuthorized';
 import { connect } from "react-redux";
 import { UserForm } from './userForm/userForm';
 
+import AboutPage from './AboutPage/AboutPage.jsx'
+
 import '../src/index.css'
 
 const App = (props) => {
@@ -18,6 +20,7 @@ const App = (props) => {
                 <Route path="/Register" element={<Register />} />
                 <Route path="/Login" element={<Login />} />
                 <Route path="/401" element={<Unauthorized />} />
+                <Route path="/about" element={<AboutPage />} />
                 
                 <Route 
                     path="/protected/form/:userID" 

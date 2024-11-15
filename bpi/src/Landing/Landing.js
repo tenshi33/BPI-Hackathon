@@ -11,7 +11,13 @@ import Star from '../assets/ai.png'
 
 const Landing = (props) => {
   const navigate = useNavigate()
-   
+  const handleLogin=()=>{
+    navigate('/login')
+  }
+  const handleAbout = ()=>{
+    navigate('/about')
+  }
+
   useEffect(() => {
     if (localStorage.getItem('userID')) {
         
@@ -29,7 +35,7 @@ const Landing = (props) => {
         <div className='flex flex-col gap-5 ml-5'>
           <h1 className='text-6xl text-white max-w-2xl' >Welcome to Project Sol <br />- Your Trusted Banking Chat Assistant</h1>
           <p className='text-white text-sm font-light max-w-2xl'>s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an un</p>
-          <button className='text-white  py-1 px-8  w-fit rounded-button border'>Continue</button>
+          <button className='text-white  py-1 px-8  w-fit rounded-button border' onClick={handleLogin}>Continue</button>
         </div>
 
         <div className=" relative flex items-center justify-center max-w-md rounded-full -right-64">
@@ -54,8 +60,9 @@ const Landing = (props) => {
 
         <div className='z-20 max-w-xl text-right '>
           <h2 className='text-left text-2xl'>Who we are</h2>
-          <p className='text-right font-light text-xl my-3'>s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an un</p>
-          <button className='rounded-button px-6 py-1 border' >Learn more</button>
+          <p className='text-right font-light text-xl my-3'>We are Team Sol, a group of passionate innovators dedicated to empowering Micro, Small, and Medium Enterprises (MSMEs) through cutting-edge AI solutions.
+</p>
+          <button className='rounded-button px-6 py-1 border' onClick={handleAbout}>Learn more</button>
         </div>
       </div>
 

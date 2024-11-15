@@ -18,7 +18,10 @@ module.exports = {
         'register-height': '739px',
         'register': '40px',
         'input-height': '50px',
-        'input-field-height': '730px'
+        'input-field-height': '730px',
+        'feature-card-height': '384px',
+        'developer-card-height': '230px',
+        'developer-profile-hight': '74px',
       },
       width:{
         'card-width': '334px',
@@ -27,7 +30,11 @@ module.exports = {
         'register-width': '937px',
         'register-input': '161px',
         'input-width': '280px',
-        'input-field-width': '1075px'
+        'input-field-width': '1075px',
+        'feature-card-width': '315px',
+        'developer-card-width': '406px',
+        'developer-profile-width': '74px',
+        
       },
       backgroundColor:{
         'input-bg': '#0D0D0D',
@@ -42,6 +49,12 @@ module.exports = {
       },
       padding:{
         'padding-btn': '20px'
+      },
+      fontSize:{
+        'header': '36px',
+        'about-p': '15px',
+        'name-size': '12px',
+        'position-size': '10px'
       }
     },
   },

@@ -10,14 +10,14 @@ const Navigation = () => {
   const handleHome = () =>{
     navigate('/')
   }
-  const handleAbout = () =>{
-    navigate('/About')
-  }
+
   const handleContact = () =>{
     navigate('/Contact')
   }
-
-
+  
+  const HandleAboutPage = () =>{
+    navigate('/about')
+  }
   const handleLogin = () => {
       navigate("/login");
   };
@@ -36,7 +36,7 @@ const Navigation = () => {
         <div className='w-7/12 flex justify-between'>
           <div className='w-40 flex justify-between'>
               <button onClick={handleHome}>Home</button>
-              <button>About</button>
+              <button onClick={HandleAboutPage}>About</button>
               <button>Contact</button>
           </div>
           <div className=''>
