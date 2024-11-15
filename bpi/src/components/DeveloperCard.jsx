@@ -23,10 +23,10 @@ const DeveloperCard = (props) => {
           <a href={props.github} target='_blank' className='w-8 h-8 bg-white  rounded-md grid place-items-center'>
             <img className='w-7' src={github} alt="Github Logo" />
           </a>
-          <a href='' className='w-8 h-8 bg-white  rounded-md grid place-items-center'>
+          <a href={props.gmail} className='w-8 h-8 bg-white  rounded-md grid place-items-center'>
             <img className='w-7' src={gmail} alt="Gmail Logo" />
           </a>
-          <a href='' className='w-8 h-8 bg-white  rounded-md grid place-items-center'>
+          <a href={props.linkedIn} className='w-8 h-8 bg-white  rounded-md grid place-items-center'>
             <img className='w-7' src={linkedIn} alt="LinkedIn Logo" />
           </a>
         </div>

@@ -34,7 +34,7 @@ const Landing = (props) => {
       <div className='flex relative  ' >
         <div className='flex flex-col gap-5 ml-5'>
           <h1 className='text-6xl text-white max-w-2xl' >Welcome to Project Sol <br />- Your Trusted Banking Chat Assistant</h1>
-          <p className='text-white text-sm font-light max-w-2xl'>s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an un</p>
+          <p className='text-white text-sm font-light max-w-2xl'>Discover how Project SOL revolutionizes decision-making for Micro, Small, and Medium Enterprises (MSMEs) with localized generative AI solutions. We’re here to make advanced technology accessible, secure, and tailored to your business needs.</p>
           <button className='text-white  py-1 px-8  w-fit rounded-button border' onClick={handleLogin}>Continue</button>
         </div>
 
@@ -68,9 +68,9 @@ const Landing = (props) => {
 
 
      <div className='flex m-auto  w-full gap-10 justify-center  items-end  '>
-        <Card star={Star}/>
-        <Card star={Star}/>
-        <Card star={Star}/>
+        <Card star={Star} title="AI-Powered Decision Support" paragraph="From sales forecasting to customer targeting, our tools are built to optimize every aspect of your business."/>
+        <Card star={Star} title="Automated Database Query Assistant" paragraph="Easily access personalized insights with our automated system that retrieves and processes your business data securely."/>
+        <Card star={Star} title="Tailored Solutions for MSMEs" paragraph="Whether you're in retail, manufacturing, or services, our platform adapts to your unique challenges and goals."/>
 
         <div className=" absolute flex items-center justify-center max-w-md rounded-full -right-52">
               <img className=" object-fill rounded-full blur-3xl bg-gradient-to-r from-glow-primary via-glow-secondary to-glow-tertiary shadow-intense-glow filter mix-blend-color-dodge" src={circle} alt="" />

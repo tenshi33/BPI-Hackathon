@@ -82,10 +82,12 @@ const AboutPage = () => {
         </div>
 
         <div className='flex flex-wrap gap-2'>
-            <DeveloperCard name="Richard Parado" position="Front-end Developer" image={image_1} quotes="The frontend is where ideas meet reality and where users fall in love with experiences." github="https://www.youtube.com/watch?v=_tylBq5Sf8Q&list=RD_tylBq5Sf8Q&start_radio=1"/>
-            <DeveloperCard name="Angelo Egwaras" position="Project Manager" image={image_2} quotes="An AI engineer doesn’t just build models; they teach machines to think, learn, and evolve."/>
-            <DeveloperCard name="Roent Traballo" position="Ai Engineer" image={image_3} quotes="A great project manager builds bridges between ideas and execution, guiding teams to success."/>  
-            <DeveloperCard name="Nathaniel Hernandez" position="Full-Stack Developer" image={image_4} quotes="A great backend is like the foundation of a skyscraper—unseen but critical to holding everything together."/>
+            <DeveloperCard name="Richard Parado" position="Front-end Developer" image={image_1} quotes="The frontend is where ideas meet reality and where users fall in love with experiences." github="https://github.com/RichardPharads" gmail="richard05parado@gmail.com
+" linkedIn="https://www.linkedin.com/in/richard-parado-8a508b32b/"/>
+            <DeveloperCard name="Angelo Egwaras" position="Project Manager" image={image_2} quotes="An AI engineer doesn’t just build models; they teach machines to think, learn, and evolve." github="https://github.com/tenshi33
+https://www.linkedin.com/in/angelo-egwaras/" gmail="angeloegwaras@gmail.com" linkedIn="https://www.linkedin.com/in/angelo-egwaras/"/>
+            <DeveloperCard name="Roent Traballo" position="Ai Engineer" image={image_3} quotes="A great project manager builds bridges between ideas and execution, guiding teams to success." github="https://github.com/TFG-Patatas" gmail="roent09@outlook.com" linkedIn="https://www.linkedin.com/in/roentgen-traballo-7ab196338"/>  
+            <DeveloperCard name="Nathaniel Hernandez" position="Full-Stack Developer" image={image_4} quotes="A great backend is like the foundation of a skyscraper—unseen but critical to holding everything together." github="https://github.com/Noirakumaaa" gmail="hernandezlnathaniel@gmail.com" linkedIn="https://www.linkedin.com/in/hernandezlnathaniel"/>
             
         </div>
       </div>
