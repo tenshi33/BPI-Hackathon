@@ -32,7 +32,7 @@ const Navigation = () => {
   return (
    <div className='w-full fixed z-50 '>
     <div className='flex  justify-between items-center py-8 text-sm  px-10  max-w-7xl m-auto'  >
-        <h2 className='w-auto'>Logo</h2>
+        <h2 className='w-auto'>Project SOL</h2>
         <div className='w-7/12 flex justify-between'>
           <div className='w-40 flex justify-between'>
               <button onClick={handleHome}>Home</button>
